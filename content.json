@@ -1,0 +1,328 @@
+{
+  "updated": "2026-09-01",
+  "foundations": [
+    {
+      "zone": "meta",
+      "title": "Meta",
+      "blurb": "Facebook and Instagram ads. Where most DTC acquisition spend goes, and where the algorithm changed shape in 2026.",
+      "cards": [
+        {
+          "h": "The learning phase",
+          "conf": "verified",
+          "src": "Meta Business Help Centre — About the Learning Phase",
+          "url": "https://www.facebook.com/business/help/112167992830700/",
+          "body": "An ad set needs roughly **50 optimisation events in a rolling 7-day window** to leave the learning phase. Below that, Meta is still guessing who to show your ads to, so cost per result swings wildly.\n\nThe optimisation event is whatever you told it to optimise for — usually Purchase. Not link clicks, not impressions.\n\n**Why you care:** it sets a floor on how thin you can spread a budget. Four ad sets on a small budget means four ad sets that never learn.",
+          "watch": "A 'significant edit' — changing the optimisation event, audience, or creative, or pausing — resets the phase. Fiddling costs you the learning."
+        },
+        {
+          "h": "Click attribution changed in 2026",
+          "conf": "verified",
+          "src": "Meta for Business — Simplifying Ad Measurement for a Social-First World",
+          "url": "https://www.facebook.com/business/news/click-attribution",
+          "body": "**Click-through now means an actual link click** — one that sends someone to your site, lead form, app or Messenger. Likes, shares, saves, comments and non-link video taps no longer count as clicks.\n\nThose moved to a new bucket called **engage-through** (formerly engaged-view), which now covers likes, shares, saves, comments, carousel swipes and video views of 5+ seconds.\n\n**The trap:** engage-through has a **1-day window, not 7**. If someone liked your ad and bought on day three, that conversion is now attributed to nothing.",
+          "watch": "Any Meta benchmark from before March 2026 is not comparable to one after it. Reported ROAS moved without performance moving. Say this out loud to clients before they ask."
+        },
+        {
+          "h": "Andromeda and Lattice",
+          "conf": "sourced",
+          "src": "Multiple agency analyses citing Meta engineering; not verified against Meta primary docs",
+          "url": "",
+          "body": "Meta replaced its old stack of siloed models with two systems.\n\n**Andromeda** is retrieval — the gatekeeper. It shortlists which ads even get considered, reportedly evaluating in the order of millions of candidate ads per auction.\n\n**Lattice** is ranking — it decides which shortlisted ad actually wins, across all placements at once.\n\n**Why it matters:** matching moved from audience-to-adgroup toward individual-user-to-individual-ad. The lever shifted from *who you target* to *what your creative is*. Detailed targeting matters less than it did; creative variety matters more.",
+          "watch": "I could not verify the specific figures against Meta's own engineering blog. Treat the direction as real and the numbers as agency reporting."
+        },
+        {
+          "h": "Advantage+ Sales, and the 2026 consolidation",
+          "conf": "sourced",
+          "src": "Multiple agency guides, consistent with each other; not verified against Meta primary docs",
+          "url": "",
+          "body": "Two things changed:\n\n1. **Advantage+ Shopping was renamed Advantage+ Sales** and broadened past pure ecommerce.\n2. Around **February 2026 Meta merged the manual and Advantage+ campaign flows** into one interface, AI optimisations on by default.\n\nThe old flat Advantage+ structure gained ad sets back, reportedly capped around 50 ads each.\n\n**Why it matters:** most advice online still describes 'manual vs Advantage+' as a choice you make. That framing is out of date.",
+          "watch": "Verify against the actual Ads Manager UI before repeating any of this to a client — I have not seen it myself."
+        },
+        {
+          "h": "ICPs, avatars, and where they actually go",
+          "conf": "sourced",
+          "src": "meta-channel-playbook + EquaVetz brand identity doc, 31 Aug 2026",
+          "url": "",
+          "body": "**ICP = Ideal Customer Profile.** A description of who you're actually trying to reach.\n\nThe thing that trips people up on Meta: **you don't target it any more.** Interest-stacking is legacy. The playbook's line is *\"target broad (country + age floor) and let distinct creative angles find their segments\"*.\n\nSo the profile doesn't go into the targeting boxes. **It goes into the creative brief.** One ad speaks to one profile, and Meta works out who responds to which. That's what people mean when they say the creative *is* the targeting.\n\n**Worked example.** EquaVetz has two profiles in its own brand doc:\n\n- **The Trainer** &mdash; racing stables in VIC, QLD and NSW. Reached through direct relationships, vets and stable contracts.\n- **The Owner** &mdash; equestrian and recreational. On Instagram and in equestrian Facebook groups, and *\"often buys to fix something they can see, like an itch or a dull coat.\"*\n\nOne budget, one broad audience, **two completely different sets of ads** &mdash; not two different targeting setups.\n\n**Vocabulary note:** ICP is mostly a B2B term. In DTC you'll hear **avatar** or **sub-avatar** more often, and the platform's own research pipeline uses those. Same idea.",
+          "watch": "A profile only earns its place if it changes the ad. If two avatars would produce the same image and the same headline, they're one avatar with two labels. The house rule on ad briefs is strict about this: **one angle &times; one avatar per brief**, and a brief with no visual attached *\"produces generic output\"*."
+        }
+      ]
+    },
+    {
+      "zone": "google",
+      "title": "Google",
+      "blurb": "Search, Shopping, Performance Max. Intent-led rather than interruption-led — people are already looking.",
+      "cards": [
+        {
+          "h": "“Google Ads is dead” — what to say when a client says this",
+          "conf": "verified",
+          "src": "Alphabet FY2025 results — Google Search & other revenue $224.5bn, YouTube ads $40.4bn",
+          "url": "https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/2025q4-alphabet-earnings-release.pdf",
+          "body": "You will hear this. Usually from someone who spent real money and got nothing back, so don't argue with the feeling — the loss is real and arguing makes you sound like a vendor.\n\nThe distinction that actually helps: **\"Google Ads doesn't work\" and \"your Google Ads didn't work\" are different sentences.** Almost everyone collapses them into one.\n\nThe scale answer, if you need one: Google Search advertising alone took **$224.5 billion** in 2025, with another $40.4 billion on YouTube. That volume doesn't happen on a platform that doesn't convert — it happens because it converts for people who set it up properly.\n\n**Why it matters to you:** a churning or nervous client will say this. Meeting it with a number and a distinction is much stronger than defending the platform.",
+          "watch": "Don't use the big number to win an argument. Use it to move the conversation from 'is the platform broken' to 'what specifically went wrong in this account' — which is a question you can actually answer."
+        },
+        {
+          "h": "The dead-account checklist",
+          "conf": "practitioner",
+          "src": "Google Ads Simplified (YouTube)",
+          "url": "",
+          "body": "A practitioner's post-mortem on an account that burned $3,000 with zero leads. Six things were wrong, and none of them were Google's fault:\n\n- **No conversion tracking.** Google had no idea what was working, so it optimised blind.\n- **Broad match on a tiny budget.** Ads showed against searches barely related to the product.\n- **Generic ad copy** — \"quality service, competitive prices, contact us today.\" Copy that could belong to any business in any industry.\n- **No negative keywords.**\n- **No ad extensions** (sitelinks, callouts, location).\n- **Nobody had opened the search terms report** in six weeks of spend.\n\nRun this list against any underperforming Google account before you conclude anything about strategy. It's free, it takes an afternoon, and it's usually where the problem is.",
+          "watch": "This is craft, not documentation — one experienced operator's checklist. It matches what the EquaCare account actually had wrong (a page-load event counted as a purchase), which is why it's worth keeping. Treat it as a strong prior, not a law."
+        },
+        {
+          "h": "Intent, not traffic — and the empty fridge",
+          "conf": "practitioner",
+          "src": "Google Ads Simplified (YouTube)",
+          "url": "",
+          "body": "Two ideas from the same source worth keeping.\n\n**Intent beats traffic.** He ran ads for an accountancy firm for four months. Clicks fine, CTR fine, almost no leads. They were appearing for people searching *accounting software* — not *accounting services*. Same words, opposite intent, and every click was paid for.\n\nThe reframe: Google Ads isn't a traffic tool you point at a budget. It's a targeting tool. The question isn't \"how do I get more clicks\", it's \"how do I get clicks from the right person, at the right moment, with the right message.\"\n\n**The empty fridge.** Smart Bidding genuinely processes signals no human could — time of day, device, location, audience behaviour, in real time. The failure mode isn't the automation; it's handing it control before giving it anything to learn from. Hiring a great chef and handing them an empty fridge.",
+          "watch": "This is the same shape as the tROAS point below and the Meta learning-phase point: automation needs conversion signal before it can help. If you only remember one principle across both platforms, make it that one."
+        },
+        {
+          "h": "Search vs Shopping vs PMax",
+          "conf": "sourced",
+          "src": "General platform knowledge; stable across years",
+          "url": "",
+          "body": "**Search** — text ads against keywords someone typed. Highest intent, you control the keyword.\n\n**Shopping** — product listings with image and price, driven by a Merchant Center feed, not keywords. Your *feed* is your targeting. This is why rewriting product titles moves performance so much.\n\n**Performance Max (PMax)** — one campaign across Search, Shopping, YouTube, Display, Gmail, Maps. You give assets and a goal; Google decides placement. Least control, most reach.",
+          "watch": "On EquaCare, rewriting product titles to match what people actually search drove a reported +140%. Feed work is usually the cheapest win on a Shopping account."
+        },
+        {
+          "h": "AI Max — check this yourself",
+          "conf": "unverified",
+          "src": "Agency reporting only. Google's own announcements page did not confirm it when I checked on 28 Aug 2026.",
+          "url": "https://support.google.com/google-ads/announcements/9048695?hl=en",
+          "body": "Several agency sources say that **from September 2026**, campaigns using Dynamic Search Ads, automatically created assets, or campaign-level broad match will auto-upgrade to something called **AI Max**, with new DSA campaign creation ending.\n\nIf true, that lands next month and affects live client accounts.",
+          "watch": "I could not verify this against Google's own documentation. Do not repeat it to a client until you have. Ask someone on the Google side of the pod, or check Ads Manager directly."
+        },
+        {
+          "h": "Bidding you'll actually meet",
+          "conf": "sourced",
+          "src": "Stable platform concepts",
+          "url": "",
+          "body": "**tCPA** (target cost per acquisition) — tell Google what you'll pay per conversion, it bids to hit that.\n\n**tROAS** (target return on ad spend) — tell it the revenue multiple you need, it bids to hit that.\n\n**Maximise conversions / conversion value** — no target, spend the budget, get as much as possible.\n\n**The catch on both targets:** they need conversion history to work. On a brand-new account there is nothing to learn from, so starting with a tight tROAS usually just throttles delivery to nothing.",
+          "watch": "Ad rank, not just budget, decides who wins the auction — relevance and landing page quality feed into it. Bidding more is not the only lever."
+        },
+        {
+          "h": "What Google creative actually is",
+          "conf": "sourced",
+          "src": "google-channel-playbook + ad-copy-google-rsa + the EquaCare account, 31 Aug 2026",
+          "url": "",
+          "body": "Almost everything you learn about creative at an agency &mdash; angles, hooks, concepts, fatigue, testing waves &mdash; is **Meta machinery**. Google's version is a different job. Five things, roughly in order of leverage:\n\n**1 · The product feed.** For Shopping and PMax the feed *is* the creative: titles, images, price, availability. There are no keywords in Shopping, so the feed is your targeting as well. Rewriting titles to match real search language drove a reported **+140%** on EquaCare. Usually the cheapest win on the account.\n\n**2 · RSAs.** 15 headlines, 4 descriptions, and Google assembles the combinations. It grades you on **Ad Strength**. Put the keyword in the headlines &mdash; \"keyword mirroring\" &mdash; because relevance feeds ad rank.\n\n**3 · PMax asset groups.** Headlines under 30 characters, descriptions under 90, plus real images and video. This is the one place on Google that wants visual assets, because PMax also serves on YouTube and Display.\n\n**4 · Extensions** &mdash; sitelinks, callouts, structured snippets, promotions. Free real estate on the results page. Most accounts neglect them entirely.\n\n**5 · Landing pages.** Google grades relevance and it changes what you pay. EquaVetz loses **~80% of impression share to rank, not budget** &mdash; that's a relevance and landing-page problem, and no amount of bidding fixes it.\n\n**The mindset shift:** Google creative is mostly *text and data, graded by a machine*. Meta creative is *images, judged by a human in half a second*.",
+          "watch": "Because a machine grades it, Google will happily grade its own work &mdash; auto-apply writes responsive search ads and then scores them. EquaVetz had 18 sitting at POOR strength, some auto-written since 2022. Check who actually wrote the ads before you assume a human chose those words."
+        },
+        {
+          "h": "17 years of Google Ads, filtered",
+          "conf": "practitioner",
+          "src": "Unattributed YouTube practitioner, running Google Ads since 2009 — note: two sponsor segments (own coaching + Hyros tracking), so commercial incentives apply",
+          "url": "",
+          "body": "The claims that survive checking, from a long practitioner talk:\n\n- **LTV beats CAC as the lever.** Doubling what a customer is worth is usually easier than cutting acquisition cost 30% — and it buys tolerance for CAC wobble. Same logic as the retention card.\n- **Judge on conversion volume, not time.** 2,000 conversions/day → judge in hours. Four a week → months. Use a significance calculator, not a calendar.\n- **Budget works back from the business**, not audience size: capacity → close rate → leads needed → CPL → budget.\n- **Weak offer, no structure saves you.** Strong offer covers bad copy; the reverse never holds.\n- **Don't fight seasonality** — spend into the good months rather than propping up the bad ones.\n- **Landing pages carry the post-click half.** Matches the lost-to-rank finding pattern.\n\n**Where the house line differs:**\n\n- He says *\"most of Google's recommendations are beneficial.\"* The distinction that matters: recommendations **surfaced for review** are often fine; **auto-apply** is the trap. EquaVetz is the counterexample — 18 POOR-strength ads Google auto-wrote from 2022.\n- He'd start Demand Gen if you have Meta creative; house playbook calls Demand Gen auxiliary, not a default.\n- His \"only ROAS or CPA matter\" misses the house refinement: **blended MER beats platform ROAS** — his own sponsor demo (Google saw 3 of 6 conversions) shows why platform numbers under-count.\n\n**His sequencing matches the house:** Search or Shopping first, PMax only once something works — PMax is the most scalable surface and the worst place to start.",
+          "watch": "Sponsored content cuts both ways: the tracking-software segment claims the third-party number is \"the accurate one\" — unverifiable, and he's paid to say it. Take the volume-not-time and LTV points; leave the product endorsements."
+        },
+        {
+          "h": "Brand crossing — how campaigns steal from each other",
+          "conf": "verified",
+          "src": "EquaVetz account, search-terms read 31 Aug 2026; mechanism from google-channel-playbook",
+          "url": "",
+          "body": "**The same search can be served by more than one of your campaigns.** Someone types your brand name — the brand campaign wants it, PMax wants it too. Google picks one of yours, and PMax usually wins these fights.\n\nFollow one click to see why it wrecks analytics. A brand click was going to convert anyway — cheapest, surest revenue in the account. When PMax takes it, **the revenue lands in PMax's report.** Then every number lies politely:\n\n- **PMax looks like it's acquiring.** Inside EquaVetz's 2.1x blend: brand terms at 8.9x, genuinely new traffic at ~1.0x. The blend hides that real acquisition sits at break-even.\n- **The brand campaign looks weak** — robbed of its own traffic — so someone \"fixes\" or kills the thing that works.\n- **The decision that follows is wrong:** you scale PMax believing it finds new customers, when you're paying a machine to intercept people already on their way.\n\nSales-team version: one rep rings up the walk-in regulars and tops the leaderboard, so he gets the bonus while the actual cold-outreach rep looks bad and gets cut.\n\n**The fix forces every report to mean what its name says:**\n- Non-brand **Search** campaigns → brand names as negative keywords\n- **PMax** → a brand exclusion list (it ignores normal negatives — needs the entity-matched list)\n- Cover the family: misspellings and sub-brands. EquaVetz leaked through `equicare`, `equa care`, `curapet`, `remedeaz` — customers can't spell.",
+          "watch": "Any PMax reporting a great ROAS with no brand exclusion list attached is claiming credit for brand traffic until proven otherwise. Check `shared_sets` before you believe the number — on EquaVetz it returned empty and ~A$541 of PMax's spend was its own brand."
+        }
+      ]
+    },
+    {
+      "zone": "shopify",
+      "title": "Shopify & the store",
+      "blurb": "Where the money actually lands. The ad platforms report on themselves; the store reports on reality.",
+      "cards": [
+        {
+          "h": "Why store data outranks platform data",
+          "conf": "inferred",
+          "src": "My reasoning from how the platforms report",
+          "url": "",
+          "body": "Meta reports Meta's version of events. Google reports Google's. Both claim credit for the same sale, so adding platform revenue together always overstates reality.\n\nShopify knows what was actually banked.\n\nThis is why **MER** (marketing efficiency ratio — total revenue ÷ total ad spend, all channels) is the number that survives contact with a finance team, and why Kelly made it her primary metric at EquaVetz.",
+          "watch": "MER is a definition, not a law — different teams compute it differently. Always confirm whose definition you're reading before you quote a number."
+        },
+        {
+          "h": "Cost of goods, and why it decides everything",
+          "conf": "sourced",
+          "src": "Attio call, EquaCare, 23 Mar 2026",
+          "url": "",
+          "body": "If COGS is set up properly in Shopify you can read gross margin, and margin is what turns a ROAS number into a decision.\n\nWorked example from a real call: **~75% gross margin → break-even ROAS 1.35.** Below that you lose money on every order. They set a scale target of 1.5 — profit on each order, with Klaviyo retargeting doing the lifetime-value work.\n\nWithout margin, a ROAS of 2.0 is just a number. With it, you know whether to scale or stop.",
+          "watch": "Ask for margin on every account. If nobody knows it, that is the first thing to fix, before any spend decision."
+        },
+        {
+          "h": "Retention sets the ceiling on what you can pay",
+          "conf": "sourced",
+          "src": "Attio call, EquaCare, 23 Mar 2026 — Marcus on Klaviyo retargeting for lifetime value",
+          "url": "",
+          "body": "Break-even ROAS assumes **one order**. That's the hidden assumption in every break-even number.\n\nIf a customer buys once and vanishes, you need to clear break-even on that single order or you lose money. If they buy three times, order one doesn't have to pay for itself — later orders do. Which means you can knowingly acquire at a loss up front and still win.\n\nThat is the whole reason retention belongs in a paid-media conversation. It doesn't sit beside your ROAS target; it **sets how loose that target is allowed to be**.\n\nOn EquaCare they chose the conservative version — profit on every single order at 1.5 — precisely because there was no lifetime-value data to justify anything looser. *\"We aim to retarget on Klaviyo for lifetime value.\"*\n\n**Which product acquires matters too.** Their oil was the hook but only replaced every 6–12 months; the protein and immune products repeat monthly. Acquire someone on a once-a-year product and you've won a customer who isn't coming back this quarter.",
+          "watch": "**The MER trap.** MER is total revenue over total ad spend. Email revenue lands in the numerator and costs almost nothing in the denominator — so a better email programme raises MER with no paid improvement at all. If someone sends a campaign burst in the same week you launch ads, MER moves and it looks like paid working. Call it before it happens, not after."
+        }
+      ]
+    },
+    {
+      "zone": "measure",
+      "title": "Measurement",
+      "blurb": "Reading the numbers correctly — the chain that links them, and the ways they quietly lie to you.",
+      "cards": [
+        {
+          "h": "The chain — CPM to CAC",
+          "conf": "verified",
+          "src": "Arithmetic identity — check it yourself with any three numbers",
+          "url": "",
+          "body": "Every acquisition metric sits on one chain. Learn this and most 'why is performance down' questions become answerable.\n\n**CPM → CTR → CPC → CVR → CAC**\n\n- **CPM** — cost per 1,000 impressions. What you pay to be seen.\n- **CTR** — click-through rate. How many of those became clicks.\n- **CPC** — cost per click. `CPM ÷ (1000 × CTR)`\n- **CVR** — conversion rate. How many clicks became customers.\n- **CAC** — cost to acquire one customer. `CPM ÷ (1000 × CTR × CVR)`\n\n**Worked, so you can see it move.** Account A: CPM $20, CTR 1%, CVR 2% → CPC $2.00, **CAC $100**. Account B: CPM $40, CTR 3%, CVR 5% → CPC $1.33, **CAC $27**.\n\nB pays *double* for attention and acquires customers for *a quarter* of the price. High CPM with low CAC isn't a contradiction — it's the signature of creative and an offer that earn their expensive impressions.\n\n**So CPM alone tells you nothing.** When someone says \"our CPMs are up\", the only question that matters is *did CAC move?* If it held, the CPM rise is noise.\n\nThis is also what lets you read an audit. A tool can tell you CPM rose 40%; only the chain tells you whether that's a problem or a rounding error.",
+          "watch": "When performance declines, walk the chain and find which link broke — don't jump to the end. A CAC rise with flat CTR and CVR is auction inflation, and no amount of new creative fixes it. The platform's own audit skill says it plainly: *cite the CPM delta before blaming creative.* \"Your ads got worse\" and \"the auction got more expensive\" are very different client conversations."
+        },
+        {
+          "h": "When two reads disagree",
+          "conf": "verified",
+          "src": "Three reads of the same campaign, EquaCare Google account, 31 Aug 2026",
+          "url": "",
+          "body": "The same campaign will give you different numbers depending on which read you ask and over what window. This is normal, and it will still make you look wrong in front of a client if you haven't named your source.\n\nOne real campaign, *Search | Brand*, read three ways on the same day:\n\n- **Network segments, 30 days** — A$86 spend, **1.25× ROAS**\n- **Keyword read, 90 days** — A$286 spend, **14.2× ROAS**\n- **Search terms, 90 days** — A$118 spend, **30.3× ROAS**\n\nSome of that is the window. Some of it is that **search-term data is a thresholded sample that never sums to account spend** — the tool says so in its own warnings. Some of it is attribution basis.\n\n**The rule: never quote a ROAS without naming the read and the window.** \"Search Brand is at 30×\" is a sentence you cannot defend. \"Search Brand's brand keywords returned A$3,581 on A$118 over the last 90 days, from the search-terms read\" is one you can.\n\nSame discipline as Meta versus GA4 versus Shopify — the answer is never *which one is right*, it is *what does each one count*.",
+          "watch": "Paged reads make this worse. Search terms came back truncated at 400 rows of 400+, keywords at 60 of 61+. Any share or total computed from a truncated page is a **floor, not a fact** — say so alongside the number, or narrow the scope and re-read before drawing a conclusion."
+        },
+        {
+          "h": "Tracking breaks silently",
+          "conf": "sourced",
+          "src": "Attio call, EquaCare, 23 Mar 2026",
+          "url": "",
+          "body": "Real example: EquaCare's Google account was firing a **page-load / lead-form event as a purchase**. ROAS looked fine. Nothing was converting.\n\nNobody noticed until an agency looked. After the fix, real performance was measurable and rose sharply.\n\n**The habit:** on any new account, before judging performance, place a test order and watch the event fire end to end. Do not trust a dashboard you haven't verified.",
+          "watch": "A too-good ROAS is a tracking bug until proven otherwise. Suspicion is cheaper than a wrong recommendation."
+        },
+        {
+          "h": "Why Meta and GA4 disagree",
+          "conf": "sourced",
+          "src": "Agency analyses of the 2026 attribution change",
+          "url": "",
+          "body": "They count differently and always will:\n\n- **Meta** attributes to the ad, using its own windows, and includes view/engage-through.\n- **GA4** attributes to the last non-direct session — much stricter about clicks.\n\nAfter the 2026 change, Meta's click-through should sit **closer** to GA4 than before, because both now count link clicks.\n\n**How to talk about it:** never say one is 'right'. Say what each one measures, then anchor decisions to Shopify revenue and MER.",
+          "watch": "Clients read a gap as someone lying. Get in front of it — explain the two definitions before they compare the two screens."
+        }
+      ]
+    },
+    {
+      "zone": "operating",
+      "title": "Operating an account",
+      "blurb": "How you run an account day to day without blowing it up. Limits, rules and the words people use for them.",
+      "cards": [
+        {
+          "h": "Guardrails",
+          "conf": "verified",
+          "src": "Marketer.com platform knowledge base (L'ange campaign-playbook + brand kit), read 28 Aug 2026",
+          "url": "",
+          "body": "**A guardrail is a limit you decide in advance, so a thing can't go too far wrong while you're not watching.** That's it. Same idea as the barrier on a mountain road — it isn't steering, it's just stopping you going off the edge.\n\nThe confusion is that Marketer uses the word for **three different kinds of limit**:\n\n- **Budget guardrails** — a spend ceiling. \"No more than A$5,308 a month, and no daily pacing above X.\" Kelly's EquaVetz brief is one long guardrail: *no increase without my written approval, even if week one looks strong.*\n- **ROAS guardrails** — a performance floor. Set a minimum ROAS and anything below it stops getting money. On L'ange the playbook holds Non-Brand and PMax to their own lower floors before budget shifts anywhere.\n- **Claims guardrails** — what you're allowed to say. L'ange's kit says use \"salon-quality\" as positioning language, never as proof of a measured outcome, and verify any heat or speed claim against the live product page first.\n\nAll three are the same move: **decide the limit while you're calm, so the decision isn't made under pressure later.**\n\n**Why it matters in your job:** when a client says \"what stops this running away with our money\", guardrails is the answer. And when you set one with a client, write it down — an unwritten guardrail isn't one.\n\n**How it actually looks in the Marketer platform** (Settings → Guardrails & Autonomy). Two numbers cut performance into three bands:\n\n- Above **Target ROAS** — scaling up is *in policy*; the agent can add budget on its own\n- Between the two — hold\n- Below **Break-even ROAS** — the SOP prescribes a pull-back\n\nSo Target ROAS is **not a ceiling on performance and not a warning light**. It's the line above which the agent is trusted to act without asking. Raise it and it needs stronger proof before scaling; lower it and it scales on weaker evidence.\n\nAlso on that page: **spend caps** (monthly and daily — empty means off), **max budget increase %** (ceiling per scale-up), and an **approval threshold %** above which changes need a human.",
+          "watch": "One thing to confirm with your pod: on the Feb sales calls the platform was described **both** as *recommending* a pause when ROAS drops below the floor, **and** as *automatically* pausing and reallocating. Those are very different promises to make to a client. Find out which it actually does before you describe it to one. Two defaults to check on every new workspace: break-even ROAS ships at 1.00, which is only true at 100% margin — at 75% margin it should be ~1.33, or the agent keeps funding loss-making campaigns. And spend caps are enforced only on ad accounts billing in the cap currency; there is no conversion between currencies."
+        },
+        {
+          "h": "Two kinds of permission to scale",
+          "conf": "inferred",
+          "src": "My reasoning, worked through on EquaVetz — test it against a second account before trusting it",
+          "url": "",
+          "body": "When someone says \"can we scale this\", they could mean two different things. Keeping them apart is most of the job.\n\n**Machine autonomy** — can the agent move budget by itself, with no human clicking anything? That's the platform's scaling limits: max budget increase, approval threshold.\n\n**Commercial approval** — is the agency allowed to spend more of the client's money? That's the client's decision and it lives in their brief or contract.\n\nConflate them and you fail one of two ways. Either the agent acts and you breach a written instruction, or you lock it down so hard the client is paying for a platform that does nothing. **The second failure is quieter and just as fatal.**\n\n**The distinction that resolves it:** most \"no scaling without approval\" instructions mean *don't spend more than I agreed*, not *don't optimise*. Increasing the total is a P&L change. Reallocating inside a fixed total — moving budget off a dead campaign onto a live one — is just doing the job. Same total, same daily pace.\n\nBut that reading has to be **confirmed, never assumed.** Ask the client which they meant.\n\n**In the platform:** spend caps are the hard ceiling that enforces the commercial limit so nobody has to remember it. Max-increase and approval-threshold control how twitchy the agent is *underneath* that ceiling. Two different jobs, two different boxes.",
+          "watch": "Default scaling limits (100% max increase, 50% auto-approve) are built for accounts with real conversion history. On a new account with a handful of purchases a week, they let the agent double a budget on noise. Tighten them at launch, loosen them once there's signal."
+        },
+        {
+          "h": "Audit order — diagnose top to bottom, never sideways",
+          "conf": "verified",
+          "src": "Marketer.com platform skill: meta-ads-account-audit, read 28 Aug 2026",
+          "url": "",
+          "body": "The platform's Meta audit walks five steps **in a fixed order**, and the skill is blunt about why: *\"The order is the IP. Don't reshuffle it. Don't jump to creative recommendations before checking tracking. Don't recommend structure changes before reading spend distribution.\"*\n\n1. **Spend distribution** — where the money actually goes\n2. **Optimisation event + tracking** — is the algorithm aimed right, is the data clean\n3. **Creative inventory** — what's live, how old, how varied\n4. **Structure** — CBO/ABO, ad-set counts, spend stuck in learning\n5. **Audience + exclusions** — overlap, customer exclusion lists\n\n**Why the sequence matters:** you can't judge creative if tracking is broken, because you're grading it on bad data. You can't fix structure before you've seen where spend actually goes. Diagnose out of order and you'll confidently rebuild something that was never the problem.\n\n**When to run it:** onboarding an account, a monthly or quarterly review, or performance dropped **and the cause isn't obvious**. That last clause is the discipline — if you already know it's creative fatigue, go do the creative work. Auditing a diagnosis you already have is just slow.\n\n**What comes out:** a health score, every finding carrying its own number and time window, and a fix plan ranked impact × effort — capped at **three high-impact fixes**, so you get a real priority order instead of twenty things that all matter. Plus an explicit list of what it couldn't check, written as questions for a human.\n\n**It only reads.** Every fix still goes through propose → confirm before anything changes.",
+          "watch": "Two traps when something looks like it's declining. **Check the data is current first** — a documented run headlined an account as \"$31 spent, $0 back\" on a window that had ended seven months earlier; it was dormant, not failing. And **a rising CPM is not a failure**: the skill says cite the CPM delta before blaming creative. \"Your ads got worse\" and \"the auction got more expensive\" are very different client conversations, and only one is usually true."
+        },
+        {
+          "h": "Meta vs Google — what actually does the targeting",
+          "conf": "verified",
+          "src": "Marketer.com platform skills: meta-channel-playbook + google-channel-playbook, read 31 Aug 2026",
+          "url": "",
+          "body": "The two platforms run on opposite principles, and almost everything else follows from this one line.\n\n**Google: the keyword or the feed is your targeting.**\n**Meta: the creative is your targeting.**\n\nMeta's playbook says it flatly: *\"Interest-stacking is legacy; target broad (country + age floor) and let distinct creative angles find their segments.\"* You don't choose who sees it — you make several genuinely different ads and the system sorts people onto them. Which is why creative variety is a targeting decision on Meta, not a design preference.\n\nGoogle's is the mirror: *\"let Search own the queries you can name, PMax own the inventory sprawl.\"* You name the intent, or you hand over a product feed.\n\n**Google's five campaign roles — keep them distinct:**\n\n- **Brand Search** — cheap insurance under your own name; tight negatives so it never cannibalises non-brand reporting\n- **Non-brand Search** — the intent you can write down as keywords, themed one intent per ad group\n- **Performance Max** — feed + assets in, Google-wide delivery out. Needs strong conversion signal and a clean feed\n- **Standard Shopping** — when you need the query-level control PMax hides; pair Shopping for control with PMax for reach\n- **Demand Gen / Display** — auxiliary, *\"not as a default\"*\n\nOnly non-brand Search, PMax and Shopping are really *acquisition*. Brand Search protects revenue you already earned.\n\n**Meta's three structural choices:**\n\n- **Advantage+ Sales** — when the account has real signal volume; pools prospecting and retargeting itself\n- **Manual three-campaign shape** — prospect / retarget / test, when you need budget isolation and hard exclusions\n- **Mixed** — and the playbook calls this normal: *\"ASC as the scaled core + a manual test campaign feeding it winners\"*\n\nPlus **DPA / catalog** ads, in that order: retargeting DPA is the highest-intent layer, prospecting DPA only works once the pixel has purchase volume.\n\n**The hygiene rule is the same move on both, pointed opposite ways.** Meta: exclusions are mandatory — existing customers out of acquisition. Google: negatives are a standing weekly discipline, because *\"wasted-spend queries are the single most common Google leak.\"* **Meta excludes people. Google excludes queries.** Both are how you stop paying for the wrong person.",
+          "watch": "Both platforms will quietly spend your money on your own brand and call it a win. Google's playbook: *\"PMax cannibalizing brand — its wins are your own brand traffic; keep brand negatives current, read incrementality skeptically.\"* EquaVetz had no brand exclusion list at all, and a campaign named Shopping | Brand was spending most of its budget on generic wormer terms. When campaign names stop describing what a campaign buys, the reporting is lying to you."
+        },
+        {
+          "h": "The nine-area Google audit",
+          "conf": "verified",
+          "src": "Marketer.com platform skill: google-ads-account-audit, run in full on EquaCare 31 Aug 2026",
+          "url": "",
+          "body": "Google's audit is nine areas, and the cleanest way to hold them is as nine questions.\n\n1. **Conversion tracking** — is the thing we're counting the thing we want?\n2. **Customer lists** — do we know who already bought, so we can exclude them?\n3. **Brand vs non-brand** — are we paying for people who already know us?\n4. **Merchant Center** — can our products physically show up?\n5. **Bidding** — are we telling Google to optimise for the right thing?\n6. **Search** — are we buying the right words, and are our ads good enough to win?\n7. **YouTube / video** — are we using video at all?\n8. **Performance Max** — is the black box being supervised?\n9. **Hygiene** — is anything quietly set up wrong?\n\n**Order matters the same way it does on Meta.** Measurement before targeting; *can it serve* before *is it performing*. On EquaCare that paid off directly: area 4 found both Protein Boosters blocked in Merchant Center, which is **why** area 8's Protein Pellets asset group spent A$110 for nothing. One cause, two areas. Audited out of order you'd have killed a working asset group.\n\n**Four things make it an audit rather than an opinion:**\n\n- Every finding carries a real id, a metric and the window it came from\n- **At most three fixes may be high impact.** If everything is urgent you haven't prioritised\n- What you couldn't check is stated as a question, never guessed\n- The audit only reads. Every fix runs through its own confirm step",
+          "watch": "**The skill's own manual list is out of date in one place.** It says PMax channel distribution — how much spend serves on Shopping versus Display and YouTube — is unreachable. It isn't: `insights(lens:\"segments\", segment:\"network\")` returns spend per network per campaign. On EquaCare it showed PMax running 95.2% on Search, which turns a suspected leak into a non-issue in one call. Check a manual item yourself before repeating it to a client as unknowable."
+        },
+        {
+          "h": "Creative volume — why Meta burns and Google doesn't",
+          "conf": "sourced",
+          "src": "Platform playbooks (meta-channel-playbook, google-channel-playbook) + EquaVetz account state, 31 Aug 2026",
+          "url": "",
+          "body": "They feel like two different worlds because they are, and the reason is **frequency**.\n\n**Meta shows the same person your ad again and again.** That's what wears it out. Creative lifespan runs roughly 2–4 weeks, and if new concepts aren't entering production weekly the account decays on its own — the playbook's phrase is that it *\"dies by physics\"*.\n\n**Google shows different people who typed something.** Every impression is a fresh query, not a repeat exposure to the same person. Ads can run for years without fatiguing.\n\n- **What does the targeting** — Meta: the creative. Google: the keyword or the feed.\n- **Volume at launch** — Meta: 3–5 genuinely distinct concepts. Google: one good RSA per ad group.\n- **Refresh cycle** — Meta: 2–4 weeks. Google: months, or when the offer changes.\n- **Main failure mode** — Meta: fatigue. Google: buying the wrong queries.\n\n**PMax is the exception.** It serves on YouTube and Display as well as Search, so it wants real image and video assets rather than text alone.",
+          "watch": "The tell in a real account: EquaVetz has **18 responsive search ads at POOR strength**, several auto-written by Google since 2022 and never touched. On Meta that would have been dead inside a month. On Google it's untidy but it is not what's costing them money — the zero-converting search terms are. **Don't import Meta's refresh anxiety into a Google account**; you'll spend your week rewriting ads while the budget leaks somewhere else."
+        }
+      ]
+    }
+  ],
+  "drills": [
+    {
+      "q": "A client has A$5,300/month for ads across Meta and Google. Is that enough to run four separate Meta ad sets? Why or why not?",
+      "a": "Roughly A$177/day total. If half goes to Meta, that's ~A$88/day across four ad sets — about A$22 each. At almost any realistic AOV that produces a handful of purchases per week per ad set, far under the ~50 optimisation events in 7 days needed to leave the learning phase. None of them would ever learn. Consolidation isn't a style preference at small budgets; it's the only structure that can work.",
+      "tag": "budget"
+    },
+    {
+      "q": "A client's gross margin is 60%. What is break-even ROAS, and where would you set a scale target?",
+      "a": "Break-even ROAS = 1 ÷ 0.60 ≈ 1.67. Below that you lose money on each order. A scale target sits above it with room for the number to wobble — the EquaCare precedent was break-even 1.35 with a 1.5 target, so proportionally you'd want something like 1.8–1.9 here. But that's a commercial call, not a formula: it depends on how much they'll pay for a first order to win the repeat purchase.",
+      "tag": "margin"
+    },
+    {
+      "q": "Meta reports 40 purchases. GA4 reports 26. Shopify shows 31 orders. Which is right?",
+      "a": "None of them, and all of them. They measure different things. Meta attributes to the ad within its own windows. GA4 attributes to the last non-direct session and is stricter. Shopify records what was actually banked — that's the one that pays wages. The mistake is picking a winner; the job is explaining what each counts, then anchoring the decision to Shopify revenue and MER.",
+      "tag": "measurement"
+    },
+    {
+      "q": "An account's ROAS jumps from 1.8 to 6.4 overnight with no changes made. What's your first thought?",
+      "a": "Tracking bug — probably duplicate or misfiring conversion events. A too-good number is a measurement problem until proven otherwise. EquaCare's Google account was counting page loads as purchases and looked healthy while converting nothing. Check the event fires once, on the right page, with the right value, before you tell anyone good news.",
+      "tag": "measurement"
+    },
+    {
+      "q": "Why does the 2026 attribution change mean you can't compare this month's Meta ROAS to last year's?",
+      "a": "Because what counts as a click changed. Click-through now requires a real link click; likes, shares, saves, comments and non-link video taps moved to engage-through, which only has a 1-day window. Conversions that used to be credited now aren't. The number went down without performance going down. Comparing across that boundary means comparing two different definitions.",
+      "tag": "attribution"
+    },
+    {
+      "q": "A client says 'just make the ads look nicer and performance will improve.' What's wrong with that framing?",
+      "a": "It treats creative as decoration. With Andromeda and Lattice, matching moved toward individual-user-to-individual-ad — creative is a targeting input, not a coat of paint. What actually moves performance is variety of angle: different problems, different hooks, so the system has range to match against. 'Nicer' with one message is worse than 'plainer' with six angles.",
+      "tag": "creative"
+    },
+    {
+      "q": "Why is rewriting Shopping product titles often the cheapest win on a Google account?",
+      "a": "Shopping has no keywords. The feed is the targeting. Google matches queries against the product data, so a title that reads like an internal SKU name matches nothing a customer would type. Rewriting titles to match real search language is free, fast, and doesn't need budget approval. On EquaCare it reportedly drove +140%.",
+      "tag": "google"
+    },
+    {
+      "q": "A brand-new store wants to start with a tight tROAS target. What do you say?",
+      "a": "It'll likely throttle delivery to almost nothing. Target bidding needs conversion history to learn from, and a new account has none. You end up with a campaign that spends nothing and learns nothing. Usually you start looser — maximise conversions, or a deliberately soft target — gather signal, then tighten once there's data to bid against.",
+      "tag": "google"
+    },
+    {
+      "q": "A client emails: 'We spent $3,000 on Google Ads last year and got nothing. It doesn't work.' What do you actually say?",
+      "a": "Don't defend the platform — it reads as vendor talk and the money really is gone. Separate the two claims: 'Google Ads doesn't work' versus 'that account didn't work'. Then get specific and ask for access, because the answer is almost always in the setup: was conversion tracking live, were they on broad match with a small budget, had anyone read the search terms report, were there negative keywords. You're moving them from a verdict about the platform to a question about one account — which is a question you can answer.",
+      "tag": "client convo"
+    },
+    {
+      "q": "An account has decent CTR and plenty of clicks, but almost no leads. Where do you look first?",
+      "a": "The search terms report — you're probably buying the wrong intent. The classic version: an accountancy firm appearing for 'accounting software' rather than 'accounting services'. Same vocabulary, opposite buyer, every click paid for. Good CTR against the wrong query is a sign the ad matches the search well; it says nothing about whether that searcher was ever going to buy. Check what was actually typed before you touch bids or copy.",
+      "tag": "google"
+    },
+    {
+      "q": "Why does handing a new account straight to Smart Bidding usually go badly?",
+      "a": "Because automation is only as good as the signal you feed it, and a new account has none. Smart Bidding weighs time of day, device, location, audience behaviour in real time — but it needs conversion history to weigh them against. Hand it control on day one and you've hired a great chef and given them an empty fridge. Same principle as Meta's learning phase and as tROAS on a fresh account: get signal first, automate second.",
+      "tag": "automation"
+    },
+    {
+      "q": "Avatar, persona, angle, concept — a colleague says these run 'from wide to narrow audience'. What's wrong with that row, and what's the real structure?",
+      "a": "Avatar and persona are the same thing — the WHO, a researched profile (the platform literally defines an avatar as a 'persona built from real research'). The only genuine wide→narrow audience line is market → avatar → sub-avatar. Angle and concept aren't audiences at all: an angle is the argument the ad leads with (mechanism, problem-first, transformation, social proof); a concept is the creative bet that packages it. An ad brief = one avatar × one angle. Two axes — who you're talking to and what you say — not one row. Watch the word 'concept': platform doctrine means format/setup containing angles, Hamsa means persona × angle × offer. The owner's definition governs.",
+      "tag": "vocabulary"
+    },
+    {
+      "q": "Where does voice of customer sit relative to avatar, angle and concept — is it a fifth item in the row?",
+      "a": "Not in the row — it's the raw material the whole row is built from. Avatars must cite VOC evidence (the pipeline's named pitfall is 'avatars from thin air'); angles are ranked out of the VOC bank ('the research writes the copy'); concepts package those angles. Build any of them without VOC and you get invented demographics and marketer-sounding copy. Source hierarchy: the brand's actual customers first (reviews, support tickets, calls — tier-1 is a client ask), category VOC (Reddit, forums) second.",
+      "tag": "vocabulary"
+    },
+    {
+      "q": "'On Meta the algorithm chooses the audience.' Run the same question across Google — brand Search, non-brand Search, Shopping, PMax: who does the choosing — you, the user, or the algorithm?",
+      "a": "Search flips the mechanism: the USER chooses you. They hand Google their intent as a query; your keywords just decide which raised hands you answer. Brand Search = users who already chose you (cheap insurance, tight negatives). Shopping: the user's query still leads, but feed + algorithm pick which product shows. PMax is Google's Meta-mode: feed + assets in, the ALGORITHM chooses across all inventory — which is why it needs strong conversion signal, and why it can quietly cannibalize brand traffic. Doctrine in one line: Google is intent capture plus feed-driven automation — Search owns the queries you can name, PMax owns the sprawl.",
+      "tag": "google"
+    }
+  ]
+}

@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brain — Performance Marketing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&family=Work+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ground:#14120F; --surface:#1D1A16; --surface2:#252119; --rule:#302A22; --rule2:#413930;
+  --ink:#EDE6DA; --ink2:#B8AC9A; --ink3:#8A7D6C;
+  --accent:#E07A3F; --accent-dim:#3A2418;
+  --verified:#7FB06F; --sourced:#D2A93A; --claimed:#D97757; --unverified:#DE5D4A; --inferred:#8CA0BC; --practitioner:#B294C4;
+}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){
+  --ground:#F7F4EE; --surface:#FFFFFF; --surface2:#F0EBE1; --rule:#E2DACB; --rule2:#CFC4B0;
+  --ink:#1F1B15; --ink2:#514839; --ink3:#7D7160;
+  --accent:#B85520; --accent-dim:#FBEDE3;
+  --verified:#3F7A34; --sourced:#8A6B10; --claimed:#A9421F; --unverified:#B3301E; --inferred:#4A6180; --practitioner:#6B4A82;
+}}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--ground);color:var(--ink);font-family:"Work Sans",system-ui,sans-serif;
+  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;display:flex;min-height:100vh}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;margin:0;line-height:1.15;text-wrap:balance}
+h1{font-size:2rem;font-weight:600}h2{font-size:1.5rem;font-weight:600}h3{font-size:1.12rem;font-weight:600}
+p{margin:0 0 .8em;max-width:68ch}p:last-child{margin-bottom:0}
+ul{margin:0 0 .8em;padding-left:1.1em;max-width:68ch}li{margin-bottom:.25em}
+code{font-family:"JetBrains Mono",monospace;font-size:.87em;background:var(--surface2);
+  padding:1px 5px;border-radius:3px;border:1px solid var(--rule)}
+a{color:var(--accent)}
+.mono{font-family:"JetBrains Mono",monospace}
+
+/* nav */
+nav{width:212px;flex:none;background:var(--surface);border-right:1px solid var(--rule);
+  padding:26px 0 40px;position:sticky;top:0;height:100vh;overflow-y:auto}
+nav .brand{padding:0 22px 20px;border-bottom:1px solid var(--rule);margin-bottom:14px}
+nav .brand h1{font-size:1.35rem}
+nav .brand .s{font-family:"JetBrains Mono",monospace;font-size:.6rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink3);margin-top:5px}
+nav .grp{font-family:"JetBrains Mono",monospace;font-size:.6rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink3);padding:16px 22px 6px}
+nav button{display:block;width:100%;text-align:left;background:none;border:0;color:var(--ink2);
+  font:inherit;font-size:.93rem;padding:6px 22px;cursor:pointer;border-left:2px solid transparent}
+nav button:hover{color:var(--ink);background:var(--surface2)}
+nav button.on{color:var(--accent);border-left-color:var(--accent);background:var(--accent-dim)}
+nav button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+
+main{flex:1;padding:40px 44px 100px;max-width:1000px}
+.pane{display:none}.pane.on{display:block}
+.phead{border-bottom:1px solid var(--rule2);padding-bottom:14px;margin-bottom:26px}
+.phead .k{font-family:"JetBrains Mono",monospace;font-size:.62rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.phead p{color:var(--ink2);margin-top:8px}
+
+/* cards */
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:5px;
+  padding:20px 22px;margin-bottom:16px}
+.card .top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.badge{font-family:"JetBrains Mono",monospace;font-size:.58rem;letter-spacing:.1em;
+  text-transform:uppercase;padding:3px 7px;border-radius:3px;border:1px solid currentColor;flex:none}
+.b-verified{color:var(--verified)}.b-sourced{color:var(--sourced)}
+.b-claimed{color:var(--claimed)}.b-unverified{color:var(--unverified)}.b-inferred{color:var(--inferred)}
+.b-practitioner{color:var(--practitioner)}
+.card .src{font-size:.78rem;color:var(--ink3);margin-top:14px;padding-top:11px;border-top:1px solid var(--rule)}
+.watch{margin-top:13px;padding:11px 14px;background:var(--surface2);border-left:2px solid var(--accent);
+  border-radius:0 3px 3px 0;font-size:.9rem;color:var(--ink2)}
+.watch b{color:var(--ink)}
+.watch::before{content:"WATCH FOR";display:block;font-family:"JetBrains Mono",monospace;
+  font-size:.56rem;letter-spacing:.13em;color:var(--accent);margin-bottom:5px}
+
+/* tabs */
+.tabs{display:flex;gap:2px;margin-bottom:22px;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+.tabs button{background:none;border:0;border-bottom:2px solid transparent;color:var(--ink3);
+  font:inherit;font-size:.9rem;padding:8px 14px;cursor:pointer;margin-bottom:-1px}
+.tabs button:hover{color:var(--ink)}
+.tabs button.on{color:var(--accent);border-bottom-color:var(--accent)}
+.sub{display:none}.sub.on{display:block}
+
+/* drills */
+.drill{background:var(--surface);border:1px solid var(--rule);border-radius:5px;padding:20px 22px;margin-bottom:14px}
+.drill .q{font-family:Fraunces,serif;font-size:1.08rem;font-weight:600;margin-bottom:14px}
+.drill textarea{width:100%;min-height:80px;background:var(--ground);color:var(--ink);
+  border:1px solid var(--rule2);border-radius:4px;padding:11px 13px;font:inherit;font-size:.93rem;resize:vertical}
+.drill textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+.drill .row{display:flex;gap:9px;align-items:center;margin-top:11px;flex-wrap:wrap}
+.btn{background:var(--accent);color:#160D06;border:0;border-radius:4px;font:inherit;font-weight:600;
+  font-size:.86rem;padding:8px 15px;cursor:pointer}
+.btn:hover{filter:brightness(1.1)}.btn:disabled{opacity:.35;cursor:not-allowed;filter:none}
+.btn.ghost{background:none;color:var(--ink3);border:1px solid var(--rule2);font-weight:500}
+.drill .ans{display:none;margin-top:14px;padding:14px 16px;background:var(--surface2);
+  border-left:2px solid var(--verified);border-radius:0 3px 3px 0;font-size:.94rem;color:var(--ink2)}
+.drill .ans.on{display:block}
+.drill .ans::before{content:"ONE GOOD ANSWER";display:block;font-family:"JetBrains Mono",monospace;
+  font-size:.56rem;letter-spacing:.13em;color:var(--verified);margin-bottom:7px}
+.tag{font-family:"JetBrains Mono",monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink3);border:1px solid var(--rule2);padding:2px 6px;border-radius:3px}
+.hint{font-size:.82rem;color:var(--ink3)}
+
+/* calculators */
+.calc{background:var(--surface);border:1px solid var(--rule);border-radius:5px;padding:22px;margin-bottom:18px}
+.calc h3{margin-bottom:4px}
+.calc .why{font-size:.88rem;color:var(--ink3);margin-bottom:16px;max-width:64ch}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:13px;margin-bottom:16px}
+.f label{display:block;font-family:"JetBrains Mono",monospace;font-size:.6rem;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink3);margin-bottom:5px}
+.f input{width:100%;background:var(--ground);color:var(--ink);border:1px solid var(--rule2);
+  border-radius:4px;padding:9px 11px;font-family:"JetBrains Mono",monospace;font-size:.95rem}
+.f input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+.out{background:var(--surface2);border-radius:4px;padding:16px 18px;border:1px solid var(--rule)}
+.out .big{font-family:"JetBrains Mono",monospace;font-size:1.7rem;font-weight:500;color:var(--accent);
+  line-height:1.2;margin-bottom:3px}
+.out .sm{font-size:.9rem;color:var(--ink2)}
+.out.warn{border-color:var(--unverified)}.out.warn .big{color:var(--unverified)}
+.out.good{border-color:var(--verified)}.out.good .big{color:var(--verified)}
+table{border-collapse:collapse;width:100%;margin-top:14px;font-size:.9rem}
+th{font-family:"JetBrains Mono",monospace;font-size:.58rem;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--ink3);text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule2);font-weight:400}
+td{padding:9px 10px;border-bottom:1px solid var(--rule);color:var(--ink2)}
+td.n{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
+tr.bad td{color:var(--unverified)}tr.ok td.n:last-child{color:var(--verified)}
+
+/* glossary */
+.gsearch{position:sticky;top:0;background:var(--ground);padding:0 0 14px;z-index:5;
+  margin-bottom:4px;border-bottom:1px solid var(--rule)}
+.gsearch input{width:100%;background:var(--surface);color:var(--ink);
+  border:1px solid var(--rule2);border-radius:5px;padding:11px 14px;font:inherit;font-size:.98rem}
+.gsearch input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+.gcount{font-family:"JetBrains Mono",monospace;font-size:.66rem;color:var(--ink3);margin-top:7px}
+.gsec{margin-top:30px}
+.gsec > h3{font-family:"JetBrains Mono",monospace;font-size:.64rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--accent);font-weight:400;padding-bottom:7px;
+  border-bottom:1px solid var(--rule);margin-bottom:4px}
+.gsec .intro{font-size:.9rem;color:var(--ink3);margin:10px 0 2px}
+.gterm{padding:14px 0;border-bottom:1px solid var(--rule)}
+.gterm:last-child{border-bottom:0}
+.gterm .t{font-family:Fraunces,serif;font-weight:600;font-size:1.04rem;margin-bottom:5px}
+.gterm.sub .t{font-family:"Work Sans",sans-serif;font-size:.72rem;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink3);font-weight:600}
+.gterm .d{color:var(--ink2);font-size:.94rem}
+.gterm .d p{margin-bottom:.55em}
+.gterm mark{background:var(--accent-dim);color:var(--accent);padding:0 2px;border-radius:2px}
+.ghidden{display:none}
+
+/* notes */
+.note{background:var(--surface);border:1px solid var(--rule);border-radius:5px;padding:18px 20px;margin-bottom:13px}
+.note .m{font-family:"JetBrains Mono",monospace;font-size:.62rem;color:var(--ink3);margin-top:9px}
+.empty{border:1px dashed var(--rule2);border-radius:5px;padding:30px;text-align:center;color:var(--ink3)}
+.empty code{background:var(--ground)}
+.launch{background:var(--surface);border:1px solid var(--rule);border-radius:5px;padding:16px 19px;margin-bottom:11px}
+.launch .p{font-family:"JetBrains Mono",monospace;font-size:.88rem;color:var(--accent);
+  background:var(--ground);padding:10px 13px;border-radius:4px;margin-top:9px;border:1px solid var(--rule);
+  cursor:pointer;position:relative}
+.launch .p:hover{border-color:var(--accent)}
+.launch .p::after{content:"click to copy";position:absolute;right:11px;top:50%;transform:translateY(-50%);
+  font-size:.6rem;color:var(--ink3)}
+.launch .p.copied::after{content:"copied";color:var(--verified)}
+@media(max-width:820px){body{flex-direction:column}nav{width:100%;height:auto;position:static;
+  border-right:0;border-bottom:1px solid var(--rule)}main{padding:26px 20px 70px}}
+</style></head><body>
+<nav>
+  <div class="brand"><h1>Brain</h1><div class="s">performance marketing</div></div>
+  <div class="grp">Foundations</div><div id="navFound"></div>
+  <div class="grp">Craft</div>
+  <button data-p="f-operating">Operating an account</button>
+  <div class="grp">Think</div>
+  <button data-p="brainstorm">Brainstorm</button>
+  <div class="grp">Test</div>
+  <button data-p="test">Drills &amp; ledger</button>
+  <div class="grp">Playground</div>
+  <button data-p="play">Numbers &amp; scratch</button>
+  <div class="grp">Reference</div>
+  <button data-p="glossary">Glossary</button>
+  <div class="grp">Meta</div>
+  <button data-p="about">How this works</button>
+</nav>
+<main id="main"></main>
+<script>/*__DATA__*/</script>
+<script>
+const B=window.BRAIN, M=document.getElementById('main'), NF=document.getElementById('navFound');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function md(t){t=esc(t).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*([^*\n]+)\*/g,'<em>$1</em>').replace(/`(.+?)`/g,'<code>$1</code>');
+  return t.split(/\n\n+/).map(b=>{const L=b.split('\n');
+    return L.every(l=>/^\s*[-*] /.test(l))?'<ul>'+L.map(l=>'<li>'+l.replace(/^\s*[-*] /,'')+'</li>').join('')+'</ul>'
+      :'<p>'+L.join('<br>')+'</p>';}).join('');}
+
+B.foundations.filter(z=>z.zone!=='operating').forEach(z=>{const b=document.createElement('button');b.dataset.p='f-'+z.zone;b.textContent=z.title;NF.appendChild(b);});
+
+function foundPane(z){return `<div class="pane" id="p-f-${z.zone}"><div class="phead"><div class="k">Foundations</div>
+  <h2>${esc(z.title)}</h2><p>${esc(z.blurb)}</p></div>
+  ${z.cards.map(c=>`<div class="card"><div class="top"><h3>${esc(c.h)}</h3>
+    <span class="badge b-${c.conf}">${c.conf}</span></div>${md(c.body)}
+    ${c.watch?`<div class="watch">${md(c.watch)}</div>`:''}
+    <div class="src">Source: ${c.url?`<a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.src)}</a>`:esc(c.src)}</div>
+  </div>`).join('')}</div>`;}
+
+function notesBlock(zone,cmd){const n=B.notes[zone]||[];
+  if(!n.length)return `<div class="empty">Nothing here yet.<br><br>Add one: <code>brain add ${zone} "title" "body"</code><br>
+    <span class="hint">or just tell Claude &mdash; it writes these for you.</span></div>`;
+  return n.map(x=>`<div class="note"><h3>${esc(x.title)}</h3>${md(x.body)}
+    <div class="m">${esc(x.date)} &middot; ${esc(x.file)}</div></div>`).join('');}
+
+const panes=[
+  ...B.foundations.map(foundPane),
+  `<div class="pane" id="p-brainstorm"><div class="phead"><div class="k">Think</div><h2>Brainstorm</h2>
+    <p>Half-formed thoughts, questions, things that don't fit anywhere yet. No structure required &mdash; that's the point.</p></div>
+    ${notesBlock('brainstorm')}</div>`,
+
+  `<div class="pane" id="p-test"><div class="phead"><div class="k">Test</div><h2>Drills &amp; ledger</h2>
+    <p>Two things. Drills test whether you actually understand something &mdash; commit an answer before you reveal, or it doesn't count. The ledger is where real ad tests go.</p></div>
+   <div class="tabs"><button class="on" data-s="drills">Drills</button><button data-s="ledger">Live test ledger</button></div>
+   <div class="sub on" id="s-drills">
+     <p class="hint" style="margin-bottom:18px">Write your answer first. The reveal button stays locked until you do &mdash; reading the answer cold teaches you nothing.</p>
+     ${B.drills.map((d,i)=>`<div class="drill"><div class="q">${esc(d.q)}</div>
+       <textarea id="ta${i}" placeholder="Your answer. Rough is fine &mdash; commit to something."></textarea>
+       <div class="row"><button class="btn" id="rv${i}" disabled>Reveal</button>
+       <span class="tag">${esc(d.tag)}</span><span class="hint" id="hn${i}">write something first</span></div>
+       <div class="ans" id="an${i}">${md(d.a)}</div></div>`).join('')}
+   </div>
+   <div class="sub" id="s-ledger">
+     <p class="hint" style="margin-bottom:16px">Real tests on real accounts: what you predicted, what happened, what you'd do differently. Predicting before you look is the whole value &mdash; it's how you find out if your model of the world is right.</p>
+     ${notesBlock('tests')}</div></div>`,
+
+  `<div class="pane" id="p-play"><div class="phead"><div class="k">Playground</div><h2>Numbers &amp; scratch</h2>
+    <p>Push numbers around until they mean something. Nothing here touches a real account.</p></div>
+   <div class="tabs"><button class="on" data-s="calc">Calculators</button><button data-s="split">Budget splitter</button>
+     <button data-s="live">Live data</button><button data-s="scratch">Scratch</button></div>
+
+   <div class="sub on" id="s-calc">
+     <div class="calc"><h3>Break-even ROAS</h3>
+       <div class="why">The number that turns a ROAS into a decision. Below break-even you lose money on every order, however good the ROAS looks.</div>
+       <div class="fields"><div class="f"><label>Gross margin %</label><input type="number" id="m1" value="75" min="1" max="99"></div></div>
+       <div class="out" id="o1"></div></div>
+
+     <div class="calc"><h3>Will this ad set ever learn?</h3>
+       <div class="why">Meta needs ~50 optimisation events in a rolling 7 days to leave the learning phase. This tells you whether your budget can physically get there.</div>
+       <div class="fields">
+         <div class="f"><label>Daily budget</label><input type="number" id="b2" value="124"></div>
+         <div class="f"><label>Cost per purchase</label><input type="number" id="c2" value="60"></div>
+       </div><div class="out" id="o2"></div></div>
+
+     <div class="calc"><h3>MER vs platform ROAS</h3>
+       <div class="why">Platforms each claim the same sale. MER uses total revenue over total spend, so it can't double-count. This shows the gap.</div>
+       <div class="fields">
+         <div class="f"><label>Total revenue</label><input type="number" id="r3" value="30000"></div>
+         <div class="f"><label>Total ad spend</label><input type="number" id="s3" value="5308"></div>
+         <div class="f"><label>Meta claims revenue</label><input type="number" id="m3" value="18000"></div>
+         <div class="f"><label>Google claims revenue</label><input type="number" id="g3" value="16000"></div>
+       </div><div class="out" id="o3"></div></div>
+   </div>
+
+   <div class="sub" id="s-split">
+     <div class="calc"><h3>Budget splitter</h3>
+       <div class="why">Split a monthly budget across channels and campaigns, and see which cells can actually gather enough signal to optimise. This is the EquaVetz question, made pokeable.</div>
+       <div class="fields">
+         <div class="f"><label>Monthly ad spend</label><input type="number" id="bs" value="5308"></div>
+         <div class="f"><label>Cost per purchase</label><input type="number" id="bc" value="60"></div>
+         <div class="f"><label>How many campaigns</label><input type="number" id="bn" value="4" min="1" max="12"></div>
+       </div><div id="obs"></div></div>
+   </div>
+
+   <div class="sub" id="s-live">
+     <p class="hint" style="margin-bottom:16px">A static page can't reach your ad accounts. But Claude can &mdash; these are prompts that pull real data. Click to copy, paste into Claude.</p>
+     <div class="launch"><strong>What's actually running</strong>
+       <div class="p">Using the Marketer platform, list every campaign for [client] with spend, ROAS and purchases for the last 14 days. Flag anything with spend but no conversions.</div></div>
+     <div class="launch"><strong>Creative fatigue check</strong>
+       <div class="p">For [client], show me ad-level performance over the last 30 days. Which creatives are declining, and how long have they been running?</div></div>
+     <div class="launch"><strong>Where is the waste</strong>
+       <div class="p">For [client], run an account audit. Show me spend that isn't producing conversions, broken by campaign and creative.</div></div>
+     <div class="launch"><strong>Search terms reality check</strong>
+       <div class="p">Pull the Google search terms report for [client], last 30 days. What are we paying for that we shouldn't be?</div></div>
+   </div>
+
+   <div class="sub" id="s-scratch">
+     <p class="hint" style="margin-bottom:16px">Practice angles, hooks and copy. Nothing client-facing, nothing that has to be good.</p>
+     ${notesBlock('scratch')}</div></div>`,
+
+  `<div class="pane" id="p-glossary"><div class="phead"><div class="k">Reference</div><h2>Glossary</h2>
+    <p>Plain-language first. Lives in <code>~/CSM Intern/reference/glossary.md</code> &mdash; edit it there and run <code>brain build</code>.</p></div>
+   <div class="gsearch"><input type="search" id="gq" placeholder="Search terms and definitions&hellip;" autocomplete="off">
+     <div class="gcount" id="gc"></div></div>
+   <div id="glist">${B.glossary.map(sec=>`<div class="gsec" data-sec>
+     <h3>${esc(sec.title)}</h3>
+     ${sec.intro?`<div class="intro">${md(sec.intro)}</div>`:''}
+     ${sec.entries.map(e=>`<div class="gterm${e.sub?' sub':''}" data-term="${esc((e.term+' '+e.body).toLowerCase())}">
+       <div class="t">${esc(e.term)}</div>${e.body?`<div class="d">${md(e.body)}</div>`:''}</div>`).join('')}
+   </div>`).join('')}</div></div>`,
+
+  `<div class="pane" id="p-about"><div class="phead"><div class="k">Meta</div><h2>How this works</h2></div>
+   <div class="card"><h3>Confidence badges</h3>
+     <p>Every claim carries how much you should trust it. This exists because I once filed a client's claim about her own company as "sourced" just because it was a direct quote. A quote proves someone said it, not that it's true.</p>
+     <table><tr><th>Badge</th><th>Means</th></tr>
+     <tr><td><span class="badge b-verified">verified</span></td><td>Checked against a primary source &mdash; the platform's own documentation</td></tr>
+     <tr><td><span class="badge b-sourced">sourced</span></td><td>Stated in something real I read, but not a primary source</td></tr>
+     <tr><td><span class="badge b-practitioner">practitioner</span></td><td>Craft from an experienced operator. No primary source exists &mdash; a strong prior, not a law.</td></tr>
+     <tr><td><span class="badge b-claimed">claimed</span></td><td>Someone asserted it about their own business. Unchecked.</td></tr>
+     <tr><td><span class="badge b-unverified">unverified</span></td><td>I could not confirm it. Don't repeat it to a client.</td></tr>
+     <tr><td><span class="badge b-inferred">inferred</span></td><td>My reasoning. Stated nowhere.</td></tr></table></div>
+   <div class="card"><h3>Adding to it</h3>
+     <p>Files are the truth; this page is just a view. Nothing you write here is stored in the browser.</p>
+     <ul><li><code>brain add brainstorm "title" "body"</code> &mdash; a thought</li>
+     <li><code>brain add tests "title" "body"</code> &mdash; a live test result</li>
+     <li><code>brain add scratch "title" "body"</code> &mdash; practice writing</li>
+     <li><code>brain build</code> &mdash; regenerate after editing anything</li></ul>
+     <p>Or just tell Claude. It writes these without being asked.</p>
+     <p>Facts live in <code>content.json</code>. Correct one and run <code>brain build</code>.</p></div>
+   <div class="card"><h3>What's missing</h3>
+     <p>The Google AI Max change is marked <span class="badge b-unverified">unverified</span> &mdash; agency blogs say DSA campaigns auto-upgrade from September 2026, but Google's own announcements page didn't confirm it on 28 Aug 2026. Someone on the Google side of the pod should check.</p>
+     <p>Andromeda/Lattice figures are agency reporting, not Meta primary. The direction is well-supported; the specific numbers aren't.</p><p>The <span class="badge b-practitioner">practitioner</span> cards in Google come from <strong>Google Ads Simplified</strong> on YouTube. Useful craft from someone who has run accounts for years &mdash; but one operator's experience, not documentation. If a card there ever contradicts something marked <span class="badge b-verified">verified</span>, the verified one wins.</p></div>
+   <div class="card"><h3>Sister tools</h3>
+     <p><code>csm status</code> &mdash; where every client engagement sits, and every open loop.<br>
+     <code>~/CSM Intern/reference/</code> &mdash; your glossary, frameworks and course notes.<br>
+     This is the third: where thinking happens before it becomes either of those.</p></div></div>`
+].join('');
+M.innerHTML=panes;
+
+// nav
+const nav=[...document.querySelectorAll('nav button')];
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},
+             set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+function go(id){const hit=document.getElementById('p-'+id);
+  if(!hit)id='f-'+B.foundations[0].zone;
+  document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id==='p-'+id));
+  nav.forEach(b=>b.classList.toggle('on',b.dataset.p===id));
+  store.set('brainPane',id);window.scrollTo(0,0);}
+nav.forEach(b=>b.onclick=()=>go(b.dataset.p));
+go(store.get('brainPane')||'f-'+B.foundations[0].zone);
+
+// tabs
+document.querySelectorAll('.tabs').forEach(t=>{const bs=[...t.querySelectorAll('button')];
+  bs.forEach(b=>b.onclick=()=>{bs.forEach(x=>x.classList.toggle('on',x===b));
+    t.parentElement.querySelectorAll('.sub').forEach(s=>s.classList.toggle('on',s.id==='s-'+b.dataset.s));});});
+
+// drills: locked until you commit
+B.drills.forEach((d,i)=>{const ta=document.getElementById('ta'+i),rv=document.getElementById('rv'+i),
+  an=document.getElementById('an'+i),hn=document.getElementById('hn'+i);
+  ta.oninput=()=>{const ok=ta.value.trim().length>=15;rv.disabled=!ok;
+    hn.textContent=ok?'':'write something first ('+Math.max(0,15-ta.value.trim().length)+' more characters)';};
+  rv.onclick=()=>{an.classList.add('on');rv.disabled=true;hn.textContent='compare yours against it — where do they differ?';};});
+
+// calculators
+const $=id=>document.getElementById(id), num=id=>parseFloat($(id).value)||0;
+function c1(){const m=num('m1')/100;if(m<=0||m>=1){$('o1').innerHTML='<div class="sm">Margin must be between 1 and 99.</div>';return;}
+  const be=1/m;$('o1').className='out';
+  $('o1').innerHTML=`<div class="big">${be.toFixed(2)}×</div><div class="sm">Break-even ROAS. Every order below this loses money.<br>
+  A working scale target sits above it with headroom &mdash; often <strong>${(be*1.12).toFixed(2)}×</strong> to <strong>${(be*1.35).toFixed(2)}×</strong>, but that's a commercial call, not a formula.
+  <br><span style="color:var(--ink3)">Note: this is gross margin only. Real break-even is higher once shipping, payment fees and returns come out &mdash; which is why people round it up. On the EquaCare call, 75% was called 1.35 rather than 1.33.</span></div>`;}
+function c2(){const b=num('b2'),c=num('c2');if(c<=0){$('o2').innerHTML='<div class="sm">Enter a cost per purchase.</div>';return;}
+  const wk=(b*7)/c,ok=wk>=50;const o=$('o2');o.className='out '+(ok?'good':'warn');
+  o.innerHTML=`<div class="big">${wk.toFixed(1)}</div><div class="sm">purchases per week at this budget. Meta needs about <strong>50</strong>.<br>
+  ${ok?'This can leave the learning phase.':`Short by <strong>${(50-wk).toFixed(1)}</strong>. To get there you'd need about <strong>${Math.ceil(50*c/7)}</strong>/day at this cost per purchase &mdash; or fewer, better-fed ad sets.`}</div>`;}
+function c3(){const r=num('r3'),s=num('s3'),m=num('m3'),g=num('g3');if(s<=0){$('o3').innerHTML='<div class="sm">Enter ad spend.</div>';return;}
+  const mer=r/s,claimed=m+g,over=claimed-r;$('o3').className='out';
+  $('o3').innerHTML=`<div class="big">${mer.toFixed(2)}×</div><div class="sm">MER &mdash; total revenue &divide; total ad spend.<br>
+  The platforms between them claim <strong>${claimed.toLocaleString()}</strong> against actual revenue of <strong>${r.toLocaleString()}</strong>
+  ${over>0?`&mdash; an overlap of <strong>${over.toLocaleString()}</strong> (${(over/r*100).toFixed(0)}% double-counted).`:'&mdash; no overlap, which is unusual. Check tracking.'}</div>`;}
+function bsplit(){const tot=num('bs'),cpp=num('bc'),n=Math.max(1,Math.min(12,parseInt($('bn').value)||1));
+  if(cpp<=0){$('obs').innerHTML='<div class="out"><div class="sm">Enter a cost per purchase.</div></div>';return;}
+  const daily=tot/30.4,per=daily/n,wk=(per*7)/cpp,dead=wk<50;
+  let rows='';for(let i=1;i<=n;i++)rows+=`<tr class="${dead?'bad':'ok'}"><td>Campaign ${i}</td><td class="n">${per.toFixed(0)}/day</td>
+    <td class="n">${wk.toFixed(1)}/wk</td><td class="n">${dead?'never learns':'learns'}</td></tr>`;
+  const maxN=Math.floor((daily*7)/(50*cpp));
+  const msg = maxN===0
+    ? `Even a <strong>single</strong> campaign can't reach it at this cost per purchase &mdash; one would get ${((daily*7)/cpp).toFixed(1)}/week.
+       Either cost per purchase has to come down, or you optimise for something cheaper and more frequent than Purchase
+       (add-to-cart, say) so there's enough signal to learn from. That is a real strategy, not a workaround.`
+    : (n>maxN ? `You've split it ${n} ways &mdash; <strong>${n-maxN} too many</strong>.` : 'Your split fits.');
+  $('obs').innerHTML=`<div class="out ${dead?'warn':'good'}"><div class="big">${maxN}</div>
+    <div class="sm">campaign${maxN===1?'':'s'} this budget can actually feed to the ~50/week threshold.<br>${msg}</div></div>
+    <table><tr><th>Cell</th><th>Budget</th><th>Purchases</th><th>Verdict</th></tr>${rows}</table>
+    <p class="hint" style="margin-top:12px">Rough model: assumes even splits and a flat cost per purchase. Reality is messier &mdash; but the direction holds, and the direction is the point.</p>`;}
+['m1'].forEach(i=>$(i).oninput=c1);['b2','c2'].forEach(i=>$(i).oninput=c2);
+['r3','s3','m3','g3'].forEach(i=>$(i).oninput=c3);['bs','bc','bn'].forEach(i=>$(i).oninput=bsplit);
+c1();c2();c3();bsplit();
+
+// glossary search
+const gq=document.getElementById('gq'), gc=document.getElementById('gc');
+const gterms=[...document.querySelectorAll('.gterm')], gsecs=[...document.querySelectorAll('[data-sec]')];
+function gfilter(){
+  const q=(gq.value||'').trim().toLowerCase();
+  let hits=0;
+  gterms.forEach(el=>{const on=!q||el.dataset.term.includes(q);
+    el.classList.toggle('ghidden',!on); if(on)hits++;});
+  gsecs.forEach(sec=>{const any=[...sec.querySelectorAll('.gterm')].some(e=>!e.classList.contains('ghidden'));
+    sec.classList.toggle('ghidden',q&&!any);});
+  gc.textContent = q ? `${hits} match${hits===1?'':'es'}` : `${gterms.length} terms`;
+}
+if(gq){gq.oninput=gfilter;gfilter();}
+
+// copy prompts
+document.querySelectorAll('.launch .p').forEach(p=>p.onclick=()=>{
+  const t=p.textContent.trim();
+  const done=()=>{p.classList.add('copied');setTimeout(()=>p.classList.remove('copied'),1600);};
+  try{navigator.clipboard.writeText(t).then(done,()=>{})}catch(e){}
+  done();});
+</script></body></html>

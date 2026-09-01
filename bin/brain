@@ -1,0 +1,136 @@
+#!/usr/bin/env python3
+"""brain - a thinking space for performance marketing. Files are truth; the page is the view."""
+import os, sys, json, re, datetime, subprocess, html
+
+ROOT = os.path.expanduser("~/CSM Intern/brain")
+NOTES = os.path.join(ROOT, "notes")
+ZONES = ["brainstorm", "tests", "scratch"]
+TODAY = datetime.date.today().isoformat()
+
+def die(m): print("error: " + m); sys.exit(1)
+
+def md(t):
+    """tiny markdown: **bold**, `code`, paragraphs, - lists"""
+    t = html.escape(t)
+    t = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", t)
+    t = re.sub(r"\*([^*\n]+)\*", r"<em>\1</em>", t)
+    t = re.sub(r"`(.+?)`", r"<code>\1</code>", t)
+    out, buf = [], []
+    for block in t.split("\n\n"):
+        block = block.strip()
+        if not block: continue
+        lines = block.split("\n")
+        if all(l.strip().startswith(("- ", "* ")) for l in lines if l.strip()):
+            out.append("<ul>" + "".join(f"<li>{l.strip()[2:]}</li>" for l in lines if l.strip()) + "</ul>")
+        else:
+            out.append("<p>" + "<br>".join(lines) + "</p>")
+    return "".join(out)
+
+def read_notes(zone):
+    d = os.path.join(NOTES, zone)
+    if not os.path.isdir(d): return []
+    items = []
+    for f in sorted(os.listdir(d), reverse=True):
+        if not f.endswith(".md"): continue
+        raw = open(os.path.join(d, f)).read()
+        m = re.match(r"^# (.*?)\n(?:date: (\S+)\n)?(.*)$", raw, re.S)
+        if m: items.append({"title": m.group(1), "date": m.group(2) or "", "body": m.group(3).strip(), "file": f})
+        else: items.append({"title": f[:-3], "date": "", "body": raw.strip(), "file": f})
+    return items
+
+GLOSSARY = os.path.expanduser("~/CSM Intern/reference/glossary.md")
+
+def read_glossary():
+    """Parse reference/glossary.md into sections of term entries. Single source of truth
+    stays in reference/ — we only render it here."""
+    if not os.path.exists(GLOSSARY): return []
+    sections, sec, entry = [], None, None
+    def flush_entry():
+        nonlocal entry
+        if entry and sec is not None:
+            entry["body"] = entry["body"].strip()
+            sec["entries"].append(entry)
+        entry = None
+    for line in open(GLOSSARY):
+        line = line.rstrip("\n")
+        if re.match(r"^# ", line): continue
+        if line.strip() == "---": continue
+        m2 = re.match(r"^## (.+)$", line)
+        m3 = re.match(r"^### (.+)$", line)
+        mt = re.match(r"^\*\*(.+?)\*\*\s*(.*)$", line)
+        if m2:
+            flush_entry()
+            sec = {"title": m2.group(1).strip(), "intro": "", "entries": []}
+            sections.append(sec); continue
+        if sec is None: continue
+        if m3:
+            flush_entry()
+            entry = {"term": m3.group(1).strip(), "body": "", "sub": True}
+            continue
+        if mt:
+            flush_entry()
+            entry = {"term": mt.group(1).strip(), "body": mt.group(2).strip(), "sub": False}
+            continue
+        if entry is not None:
+            entry["body"] += "\n" + line
+        else:
+            sec["intro"] += "\n" + line
+    flush_entry()
+    for x in sections: x["intro"] = x["intro"].strip()
+    return [x for x in sections if x["entries"] or x["intro"]]
+
+def cmd_add(args):
+    if len(args) < 2: die('usage: brain add <brainstorm|tests|scratch> "<title>" ["<body>"]')
+    zone, title = args[0], args[1]
+    if zone not in ZONES: die(f"zone must be one of: {', '.join(ZONES)}")
+    body = args[2] if len(args) > 2 else ""
+    d = os.path.join(NOTES, zone); os.makedirs(d, exist_ok=True)
+    slug = re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")[:50]
+    p = os.path.join(d, f"{TODAY}-{slug}.md")
+    open(p, "w").write(f"# {title}\ndate: {TODAY}\n\n{body}\n")
+    print("added " + p); cmd_build([])
+
+def cmd_build(args):
+    c = json.load(open(os.path.join(ROOT, "content.json")))
+    payload = {
+        "updated": c["updated"],
+        "foundations": c["foundations"],
+        "drills": c["drills"],
+        "notes": {z: read_notes(z) for z in ZONES},
+        "glossary": read_glossary(),
+        "built": TODAY,
+    }
+    tpl = open(os.path.join(ROOT, "bin", "template.html")).read()
+    out = tpl.replace("/*__DATA__*/", "window.BRAIN = " + json.dumps(payload, ensure_ascii=False) + ";")
+    p = os.path.join(ROOT, "index.html"); open(p, "w").write(out)
+    n = sum(len(v) for v in payload["notes"].values())
+    if not args or args[0] != "-q":
+        gt = sum(len(x["entries"]) for x in payload["glossary"])
+        print(f"built {p}  ({sum(len(z['cards']) for z in payload['foundations'])} cards, {len(payload['drills'])} drills, {n} notes, {gt} glossary terms)")
+
+def cmd_open(args):
+    cmd_build(["-q"]); subprocess.run(["open", os.path.join(ROOT, "index.html")])
+
+def cmd_help(args):
+    print("""
+brain — a thinking space for performance marketing
+
+  brain                       build and open the page
+  brain open                  same
+  brain build                 rebuild index.html from content.json + notes/
+  brain add <zone> "<title>" ["<body>"]
+                              zones: brainstorm | tests | scratch
+
+  Everything lives in ~/CSM Intern/brain/
+    content.json    the knowledge layer (edit to add or correct facts)
+    notes/          your own writing, one markdown file per thought
+    (glossary is read live from ~/CSM Intern/reference/glossary.md — edit it there)
+    index.html      generated — never edit by hand
+""")
+
+CMDS = {"add": cmd_add, "build": cmd_build, "open": cmd_open, "help": cmd_help}
+if __name__ == "__main__":
+    a = sys.argv[1:]
+    if not a: cmd_open([]); sys.exit(0)
+    if a[0] not in CMDS: die(f"unknown command '{a[0]}' — try `brain help`")
+    CMDS[a[0]](a[1:])
